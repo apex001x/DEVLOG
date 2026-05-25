@@ -1,0 +1,78 @@
+/* 네비게이션 */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  border-bottom: 0.5px solid #ffffff;
+}
+
+.nav-logo {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.nav-btn {
+  background: #f0f0f0;
+  color: #0f0f0f;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.nav-btn:hover {
+  background: #d0d0d0;
+}
+
+/* 레이아웃 */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+/* 버튼 공통 */
+.btn-ghost {
+  background: transparent;
+  border: 0.5px solid #444;
+  color: #ffffff;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: all 0.3s;
+}
+
+.btn-ghost:hover {
+  border-color: #444;
+  color: #aeaeae;
+}
+
+.btn-primary {
+  background: #f0f0f0;
+  color: #0f0f0f;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-danger {
+  background: #dd303046;
+  border: 0.5px solid #3a2a2a;
+  color: #ffffff;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: all 0.3s;
+}
+
+.btn-danger:hover {
+  border-color: #993333;
+  color: #cc6666;
+}

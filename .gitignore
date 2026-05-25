@@ -1,0 +1,15 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+.env
+
+# Node
+node_modules/
+dist/
+package-lock.json
+
+# 에디터
+.vscode/
+.idea/
+.DS_Store
