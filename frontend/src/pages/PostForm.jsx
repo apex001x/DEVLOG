@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getPost, createPost, updatePost } from '../api/posts'
 
@@ -8,6 +8,7 @@ function PostForm() {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { id } = useParams()
+  const textareaRef = useRef(null)
 
   const isEdit = !!id
 
@@ -43,32 +44,38 @@ function PostForm() {
     }
   }
 
+  const handleContentChange = (e) => {
+    setContent(e.target.value)
+    e.target.style.height = 'auto'
+    e.target.style.height = e.target.scrollHeight + 'px'
+  }
+
   return (
     <div>
       {/* 네비게이션 */}
       <nav className="nav">
-        <span className="nav-logo">BLOG</span>
+        <span className="nav-logo">DEVLOG</span>
         <button className="btn-ghost" onClick={() => navigate('/')}>← 목록으로</button>
       </nav>
 
       <div style={{ maxWidth: '680px', margin: '0 auto', padding: '4rem 2.5rem' }}>
 
         {/* 타이틀 */}
-        <p style={{ fontSize: '12px', color: '#555', letterSpacing: '0.08em', marginBottom: '1.2rem' }}>
+        <p style={{ fontSize: '12px', color: '#ffffff', letterSpacing: '0.08em', marginBottom: '1.2rem' }}>
           {isEdit ? 'EDIT POST' : 'NEW POST'}
         </p>
         <h1 style={{ fontSize: '36px', fontWeight: '300', letterSpacing: '-0.02em', marginBottom: '3rem' }}>
           {isEdit ? '게시글 수정' : '새 글 쓰기'}
         </h1>
 
-        <div style={{ height: '0.5px', background: '#2a2a2a', marginBottom: '3rem' }} />
+        <div style={{ height: '0.5px', background: '#ffffff', marginBottom: '3rem' }} />
 
         {/* 폼 */}
-        <div onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
           {/* 제목 입력 */}
           <div style={{ marginBottom: '2rem' }}>
-            <label style={{ fontSize: '12px', color: '#555', letterSpacing: '0.08em', display: 'block', marginBottom: '0.8rem' }}>
+            <label style={{ fontSize: '12px', color: '#ffffff', letterSpacing: '0.08em', display: 'block', marginBottom: '0.8rem' }}>
               TITLE
             </label>
             <input
@@ -80,8 +87,8 @@ function PostForm() {
                 width: '100%',
                 background: 'transparent',
                 border: 'none',
-                borderBottom: '0.5px solid #2a2a2a',
-                color: '#f0f0f0',
+                borderBottom: '0.5px solid #ffffff',
+                color: '#dddddd',
                 fontSize: '20px',
                 fontWeight: '300',
                 padding: '0.5rem 0',
@@ -93,26 +100,29 @@ function PostForm() {
 
           {/* 내용 입력 */}
           <div style={{ marginBottom: '3rem' }}>
-            <label style={{ fontSize: '12px', color: '#555', letterSpacing: '0.08em', display: 'block', marginBottom: '0.8rem' }}>
+            <label style={{ fontSize: '12px', color: '#ffffff', letterSpacing: '0.08em', display: 'block', marginBottom: '0.8rem' }}>
               CONTENT
             </label>
             <textarea
+              ref={textareaRef}
               value={content}
-              onChange={(e) => setContent(e.target.value)}
+              onChange={handleContentChange}
               placeholder="내용을 입력하세요"
-              rows={16}
               style={{
                 width: '100%',
                 background: 'transparent',
-                border: '0.5px solid #2a2a2a',
+                border: '0.5px solid #ffffff',
                 borderRadius: '6px',
-                color: '#f0f0f0',
+                color: '#dddddd',
                 fontSize: '15px',
                 lineHeight: '1.9',
                 padding: '1rem',
                 outline: 'none',
-                resize: 'vertical',
                 fontFamily: 'inherit',
+                resize: 'none',
+                overflow: 'hidden',
+                minHeight: '100px',
+                transition: 'height 0.2s ease',
               }}
             />
           </div>
@@ -120,17 +130,17 @@ function PostForm() {
           {/* 버튼 */}
           <div style={{ display: 'flex', gap: '12px' }}>
             <button
-              onClick={handleSubmit}
+              type="submit"
               className="btn-primary"
               disabled={loading}
               style={{ opacity: loading ? 0.5 : 1 }}
             >
-              {loading ? '저장 중...' : isEdit ? '수정 완료' : '발행하기'}
+              {loading ? '저장 중...' : isEdit ? '수정 완료' : '작성 완료'}
             </button>
-            <button className="btn-ghost" onClick={() => navigate('/')}>취소</button>
+            <button type="button" className="btn-ghost" onClick={() => navigate('/')}>취소</button>
           </div>
 
-        </div>
+        </form>
       </div>
     </div>
   )

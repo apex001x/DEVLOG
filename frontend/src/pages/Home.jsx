@@ -32,7 +32,7 @@ function Home() {
     }
   }
 
-  if (loading) return <div style={{ padding: '2.5rem', color: '#555' }}>불러오는 중...</div>
+  if (loading) return <div style={{ padding: '2.5rem', color: '#ffffff' }}>불러오는 중...</div>
 
   return (
     <div>
@@ -74,13 +74,15 @@ function Home() {
               alignItems: 'center',
               padding: '1.4rem',
               borderBottom: '0.5px solid #c3c3c3ba',
-              transition: 'padding 0.15s',
+              transition: 'transform 0.15s',
               background: '#7474742d',
               borderRadius: '10px',
               marginBottom: '0.7rem',
+              cursor: 'pointer',
             }}
-            onMouseEnter={e => e.currentTarget.style.padding = '1.6rem'}
-            onMouseLeave={e => e.currentTarget.style.padding = '1.4rem'}
+            onMouseEnter={e => e.currentTarget.style.transform = 'translateX(-0.7rem)'}
+            onMouseLeave={e => e.currentTarget.style.transform = 'translateX(0)'}
+            onClick={() => navigate(`/posts/${post.id}`)}
           >
             {/* 왼쪽: 번호 + 제목 + 미리보기 */}
             <div

@@ -40,14 +40,14 @@ function PostDetail() {
     <div>
       {/* 네비게이션 */}
       <nav className="nav">
-        <span className="nav-logo">BLOG</span>
+        <span className="nav-logo">DEVLOG</span>
         <button className="btn-ghost" onClick={() => navigate('/')}>← 목록으로</button>
       </nav>
 
       <div style={{ maxWidth: '680px', margin: '0 auto', padding: '4rem 2.5rem' }}>
 
         {/* 메타 정보 */}
-        <p style={{ fontSize: '12px', color: '#555', letterSpacing: '0.08em', marginBottom: '1.2rem' }}>
+        <p style={{ fontSize: '12px', color: '#ffffff', letterSpacing: '0.08em', marginBottom: '1.2rem' }}>
           {new Date(post.created_at).toLocaleDateString('ko-KR', {
             year: 'numeric', month: 'long', day: 'numeric'
           })}
@@ -58,14 +58,14 @@ function PostDetail() {
           {post.title}
         </h1>
 
-        <div style={{ height: '0.5px', background: '#2a2a2a', marginBottom: '3rem' }} />
+        <div style={{ height: '0.5px', background: '#ffffff', marginBottom: '3rem' }} />
 
         {/* 본문 */}
         <p style={{ fontSize: '16px', color: '#ccc', lineHeight: '1.9', whiteSpace: 'pre-wrap' }}>
           {post.content}
         </p>
 
-        <div style={{ height: '0.5px', background: '#2a2a2a', margin: '3rem 0' }} />
+        <div style={{ height: '0.5px', background: '#ffffff', margin: '3rem 0' }} />
 
         {/* 버튼 */}
         <div style={{ display: 'flex', gap: '12px' }}>
